@@ -26,7 +26,15 @@ class CliBuilderTest extends FlatSpec {
     val command2 = TestCommand("Second", 2)
 
     val cli: Cli[Int] = new CliBuilder(List(command1, command2)).build()
-    assert(cli.apply("Second" :: Nil) == List(2))
+    assert(cli.apply("Second" :: Nil) === List(2))
+  }
+
+  "Calling the CLI with an empty list" should "throw an exception" in {
+    val exception = intercept[IllegalArgumentException] {
+      (CliBuilder[Int]() :+ new TestCommand("one", 1)).build().apply(Nil)
+    }
+
+    assert(exception.getMessage === "No command")
   }
 
   case class TestCommand(testCommand: String, value: Int = 1) extends Command[Int] {

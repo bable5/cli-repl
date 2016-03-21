@@ -1,13 +1,14 @@
-//name := "cli-repl-parent"
+name := "cli-repl-parent"
 
 version := "1.0"
 
-scalaVersion := "2.11.8"
-
-libraryDependencies += "org.scalatest" %% "scalatest" % "2.2.6" % "test"
+scalaVersion := "2.11.7"
 
 lazy val root = project.in( file("."))
     .aggregate(cli_repl)
 
+
 lazy val cli_repl = project.in( file("cli-repl"))
+
+lazy val client = project.in( file("client")).dependsOn(cli_repl)
 

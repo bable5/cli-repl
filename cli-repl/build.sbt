@@ -1,7 +1,9 @@
 name := "cli-repl"
 
+organization := "com.mooney_ware"
+
 version := "1.0"
 
-scalaVersion := "2.11.8"
+scalaVersion := "2.11.7"
 
 libraryDependencies += "org.scalatest" %% "scalatest" % "2.2.6" % "test"
